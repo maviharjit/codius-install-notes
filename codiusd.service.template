@@ -1,0 +1,17 @@
+[Unit]
+Description=Codiusd
+After=network.target nss-lookup.target
+[Service]
+ExecStart=/usr/bin/npm start
+Environment="DEBUG=*"
+Environment="CODIUS_PUBLIC_URI=https://codius.example.com"
+Environment="CODIUS_XRP_PER_MONTH=10"
+WorkingDirectory=/usr/lib/node_modules/codiusd
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=codiusd
+User=root
+Group=root
+[Install]
+WantedBy=multi-user.target
