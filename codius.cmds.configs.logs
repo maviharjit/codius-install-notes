@@ -1,0 +1,8 @@
+# codius commands
+systemctl [status|start|stop|restart] codiusd
+
+# codius config files
+/etc/systemd/system/codius.service
+
+# codius log files
+/var/log/messages | grep codius
