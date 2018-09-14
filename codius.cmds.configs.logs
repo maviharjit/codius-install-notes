@@ -37,6 +37,30 @@ codius upload --host https://codius.example.com -d 600 --debug --tail
 #  Enables debug mode on upload
 codius upload --host https://codius.example.com -d 600 --debug
 
+# Tails the logs of a pod using the manifest hash and host
+codius tail  xb4raigiudbbbqutwp6iftxvmx6zih4sebcpiy5dpwr2w4iypcfa --host https://codius.tinypolarbear.com
+
+#  Tails the logs of all hosts in the *codiusstate.json file 
+codius tail --codius-state-file codius/default.codiusstate.json
+
+# Tails the logs of all hosts in the *codiusstate.json file from the current working directory.
+codius tail
+
+# Creates a new cron job for a running pod. Searches the current directory for default.codiusstate.json since the codius state file is not specified.
+cron create --buffer-sec 3600 -m 10 -u XRP
+
+# Lists the cron job associated with a running pod
+cron view --codius-state-file codius/default.codiusstate.json
+
+# Lists all Codius cron jobs.
+cron view -a
+
+# Removes the cron job for a pod
+cron remove --codius-state-file codius/default.codiusstate.json
+
+# Remove all Codius cron jobs.
+cron remove -a
+
 # codius config files
 /etc/systemd/system/codius.service
 
