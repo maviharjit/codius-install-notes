@@ -59,6 +59,8 @@ firewall-cmd --zone=public --permanent --list-ports
 systemctl status firewalld
 systemctl stop firewalld
 
+# find info about RAM
+dmidecode --type 17 | tee -a ramtype.txt
 
 ## configs
 # DNS spoofing
