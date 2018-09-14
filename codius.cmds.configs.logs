@@ -46,6 +46,7 @@ codius tail --codius-state-file codius/default.codiusstate.json
 # Tails the logs of all hosts in the *codiusstate.json file from the current working directory.
 codius tail
 
+## cron does not work on my setup. why?
 # Creates a new cron job for a running pod. Searches the current directory for default.codiusstate.json since the codius state file is not specified.
 cron create --buffer-sec 3600 -m 10 -u XRP
 
