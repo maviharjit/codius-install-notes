@@ -1,6 +1,28 @@
 # hyperd commands
 systemctl [status|start|stop|restart] hyperd
 
+# download a container image
+hyperctl pull ubuntu:latest
+
+# run container and attach to its terminal
+hyperctl run -t ubuntu
+exit
+
+# run container in detached mode i.e. wihtout logging into it
+hyperctl run -d ubuntu
+
+# list all running containers/PODs and their VM host
+hyperctl list
+
+# start/stop/pause/remove/ attach to a container / POD
+hyperctl [start|stop|pause|rm|attach] <POD ID>
+
+# get help with hyperctl run commands
+hyperctl run --help
+
+# this did not work on my codius setup
+virsh list
+
 # hyperd config files
 /etc/hyper/config
 
