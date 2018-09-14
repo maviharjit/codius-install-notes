@@ -1,0 +1,9 @@
+# moneyd-xrp commands
+systemctl [status|start|stop|restart] moneyd-xrp
+
+# moneyd-xrp config files
+/root/.moneyd.json
+/usr/lib/node_modules/moneyd-uplink-xrp/connector_list.json
+
+# moneyd-xrp log files
+/var/log/messages | grep money
