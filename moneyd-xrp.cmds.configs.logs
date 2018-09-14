@@ -1,14 +1,68 @@
 # moneyd-xrp commands
 systemctl [status|start|stop|restart] moneyd-xrp
 
-# configure with testnet
-mondeyd --testnet xrp:configure
+# install moneyd-uplink-xrp
+npm install -g moneyd-uplink-xrp
 
-# configure with livenet
-mondeyd xrp:configure
+# configure with testnet and start
+npm install -g moneyd moneyd-uplink-xrp
+moneyd --testnet xrp:configure
+moneyd --testnet xrp:start
 
-# print info
+# configure with livenet and start
+npm install -g moneyd moneyd-uplink-xrp
+moneyd xrp:configure
+moneyd xrp:start
+
+# local test network
+npm install -g moneyd
+moneyd local
+
+# print account info on testnet and livenet
 mondeyd --testnet xrp:info
+mondeyd xrp:info
+
+# get help
+moneyd help
+moneyd xrp:configure --help
+
+# Remote deploy
+# If you did the previous step on your remote server, then you don't need to run any special software to get moneyd on your 
+# local machine. Not only that, but you can grant access to Interledger to as many machines as you want! Just forward 
+# the moneyd port 7768 to any machine where you want ILP access by using SSH local port forwarding:
+# Replace the user@example.com with the server on which you're running moneyd.
+
+ssh -N -L 7768:localhost:7768 user@example.com
+
+# Reconciliation
+# If you crash or encounter a bug, you might find that your moneyd instance forgot to send a claim to its parent connector.
+# This results in the parent connector thinking you owe it money, and refusing to forward any of your packets
+# To fix this, just stop moneyd and run:
+# You can adjust the amount if you need to reconcile more
+# The amount is represented in XRP drops; 1000000 is a single XRP so these amounts are typically kept quite small.
+
+moneyd xrp:topup --amount 1000
+
+# clean up channels
+# Closing a channel happens in two phases. First you mark the channel for closing. This sets an expiry on the channel
+# Next, once the expiry has passed, you can send another close transaction to get your funds back and delete the channel.
+# To mark channels for closing, run:
+
+moneyd xrp:cleanup
+
+# Select the channels you'd like to close with <space> and then hit <enter>. 
+# If you run moneyd xrp:info you'll see that the channels now have expiries set.
+# Expect it to take an hour for the channel to be ready for closing; this gives the counterparty a chance 
+# to submit their best claim. Once the hour is up, run cleanup again:
+
+moneyd xrp:cleanup
+
+# This time, the channels should say ready to close. Mark them for closing, and this time they'll go away for good
+# Your XRP account will be credited the total channel capacity minus the current channel balance.
+
+# Multiple Instances
+
+# Sending Payments
 
 # moneyd-xrp config files
 /root/.moneyd.json
