@@ -14,6 +14,10 @@ fi
 echo -e "setting hostname\n"
 hostnamectl set-hostname $1
 
+# install update
+echo -e "updating system\n"
+yum -y update
+
 # install hyperd
 echo -e "installing hyperd\n"
 yum install -y gcc-c++ make
@@ -62,5 +66,9 @@ systemctl start nginx
 # open 443 on firewall
 echo -e "opening 443 on firewall\n"
 firewall-cmd --zone=public --add-port=443/tcp --permanent
+
+# additional utilities
+echo -e "installing additional utilities\n"
+yum -y install net-tools ind-utils mlocate 
 
 echo -e "dunn duna dun\n"
