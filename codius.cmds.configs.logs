@@ -1,6 +1,9 @@
 # codius commands
 systemctl [status|start|stop|restart] codiusd
 
+# reload daemon after changing cnofig file
+systemctl daemon-reload 
+
 # install codius cli
 npm install -g codius
 
