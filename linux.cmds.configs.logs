@@ -47,6 +47,17 @@ ssh -f -N -R 8080:localhost:80 server.com
 # firewall
 firewall-cmd --state
 firewall-cmd --list-all-zones
+firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=22/tcp --permanent
+firewall-cmd --get-active-zones
+firewall-cmd --list-all
+firewall-cmd --get-services
+firewall-cmd --zone=public --list-services
+firewall-cmd --zone=public --permanent --add-service=http
+firewall-cmd --zone=public --permanent --add-service=https
+firewall-cmd --zone=public --permanent --list-ports
+systemctl status firewalld
+systemctl stop firewalld
 
 
 ## configs
