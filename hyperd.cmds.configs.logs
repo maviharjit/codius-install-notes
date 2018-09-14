@@ -1,0 +1,10 @@
+# hyperd commands
+systemctl [status|start|stop|restart] hyperd
+
+# hyperd config files
+/etc/hyper/config
+
+# hyperd log files
+/var/log/hyper/hyperd.ERROR
+/var/log/hyper/hyperd.WARNING
+/var/log/hyper/hyperd.INFO
