@@ -65,6 +65,15 @@ cron remove --codius-state-file codius/default.codiusstate.json
 # Remove all Codius cron jobs.
 cron remove -a
 
+# useful URL
+https://my.codius.host.url/
+https://my.codius.host.url/version
+https://my.codius.host.url/peers
+https://my.codius.host.url/peers/discover
+https://my.codius.host.url/pods/{MANIFEST_HASH}/logs?follow={true/false}
+
+
+
 # codius config files
 /etc/systemd/system/codius.service
 
