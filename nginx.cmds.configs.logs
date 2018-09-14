@@ -1,0 +1,10 @@
+# nginx commands
+systemctl [status|start|stop|restart] nginx
+
+# nginx config files
+/etc/nginx/nginx.xonf
+/etc/nginx/conf.d/codius.conf
+
+# nginx log files
+/var/log/nginx/access.log
+/var/log/nginx/error.log
