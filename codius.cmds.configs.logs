@@ -1,6 +1,42 @@
 # codius commands
 systemctl [status|start|stop|restart] codiusd
 
+# install codius cli
+npm install -g codius
+
+# list all pods. This did not work for me
+codius pods -l
+
+# To export a manifest that is only stored in the Codius CLI from the LevelDB use the command. This did not work for me
+codius pods -m [manifestHash]
+
+# Generates the manifest and uploads a pod to the specified host. 
+codius upload --host https://codius.example.com -d 600
+
+# Generates the manifest and uploads a pod 5 random hosts
+codius upload -c 5 -d 600
+
+# Generates the manifest and uploads a pod to 2 specific hosts
+codius upload --host https://codius.example.com --host https://codius.example2.com -d 600
+
+# Extend a POD
+codius extend
+
+# Extends the pod with the passed in parameters.
+codius extend -d 600 -m 10 -u XRP
+
+# Extend the running pod on the host by its manifest hash
+extend-hash hyg2qziqlhdogtbxm347spzrwkibgbzdalyj2qavqra4gzmm5jzq --host https://codius.example.com -d 600 -m 10 -u XRP
+
+# Extends the running pod on the host using its full URL
+extend-hash https://hyg2qziqlhdogtbxm347spzrwkibgbzdalyj2qavqra4gzmm5jzq.codius.example.com -d 600 -m 10 -u XRP
+
+# Enables debug mode and tails logs on upload
+codius upload --host https://codius.example.com -d 600 --debug --tail
+
+#  Enables debug mode on upload
+codius upload --host https://codius.example.com -d 600 --debug
+
 # codius config files
 /etc/systemd/system/codius.service
 
