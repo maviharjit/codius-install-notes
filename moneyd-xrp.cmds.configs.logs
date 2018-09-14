@@ -1,6 +1,15 @@
 # moneyd-xrp commands
 systemctl [status|start|stop|restart] moneyd-xrp
 
+# configure with testnet
+mondeyd --testnet xrp:configure
+
+# configure with livenet
+mondeyd xrp:configure
+
+# print info
+mondeyd --testnet xrp:info
+
 # moneyd-xrp config files
 /root/.moneyd.json
 /usr/lib/node_modules/moneyd-uplink-xrp/connector_list.json
