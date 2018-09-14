@@ -1,0 +1,62 @@
+## Commands
+# what daemon is listening on what port
+netstat -ntlp
+
+# find your daemon in the process tree
+ps faux | egrep "moneyd|hyperd|codius"
+
+# start/ stop / check status of a daemon
+systemctl [status|start|stop|restart] [hyperd|moneyd-xrp|codiusd]
+
+# check hostname
+hostname
+
+# setup alias
+alias hyperstatus = "systemctl status hyperd" 
+alias moneystatus = "systemctl status moneyd-xrp" 
+alias codiusstatus = "systemctl status codiusd" 
+
+# check free disk space
+df -h
+
+# check RAM
+free 
+
+# check system uptim and load
+uptime
+
+# check system load
+top
+
+# selinux check status and enable/disable temporarily
+getenforce
+setenforce [0|1]
+
+# find a file
+locate <filename>
+which <filename>
+whereis <filename>
+
+# ssh tunneling
+# local fowarding fro local system's 3128 to servers 3128
+ssh -f -N -L 3128:localhost:3128 server.com
+
+# remote forwarding from server's port 8080 to local system's port 80
+ssh -f -N -R 8080:localhost:80 server.com
+
+# firewall
+firewall-cmd --state
+firewall-cmd --list-all-zones
+
+
+## configs
+# DNS spoofing
+vi /etc/hosts
+1.2.3.4    my.host.name
+
+# selinux
+/etc/selinux/config
+
+## logs
+/var/logs
+tail -f /var/log/messages
