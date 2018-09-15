@@ -16,6 +16,9 @@ alias hyperstatus = "systemctl status hyperd"
 alias moneystatus = "systemctl status moneyd-xrp" 
 alias codiusstatus = "systemctl status codiusd" 
 
+# convert the following into an alias. call it nocomments
+cat /etc/nginx/nginx.conf | grep -v \# | sed '/^$/ d'
+
 # check free disk space
 df -h
 
