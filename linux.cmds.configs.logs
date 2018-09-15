@@ -11,14 +11,6 @@ systemctl [status|start|stop|restart] [hyperd|moneyd-xrp|codiusd]
 # check hostname
 hostname
 
-# setup alias
-alias hyperstatus = "systemctl status hyperd" 
-alias moneystatus = "systemctl status moneyd-xrp" 
-alias codiusstatus = "systemctl status codiusd" 
-
-# convert the following into an alias. call it nocomments
-cat /etc/nginx/nginx.conf | grep -v \# | sed '/^$/ d'
-
 # check free disk space
 df -h
 
@@ -64,6 +56,45 @@ systemctl stop firewalld
 
 # find info about RAM
 dmidecode --type 17 | tee -a ramtype.txt
+
+# setup alias and functions
+alias hyperstatus = "systemctl status hyperd" 
+alias moneystatus = "systemctl status moneyd-xrp" 
+alias codiusstatus = "systemctl status codiusd" 
+
+# vialias to edit .bash_aliases file
+function vialias {
+	vi ~/.bash_aliases
+}
+
+# nualias to source the .bash_aliases file, so new aliases can take effect
+function nualias {
+	. ~/.bash_aliases
+}
+
+# display proper usage of function
+function usage () {
+	echo "Usage: "$1 
+}
+
+# function to show a config file without any annoying comments 
+function nocomments () {
+	if [ -z $1 ]; then
+		usage " <filename>"
+		return
+	fi 
+
+	cat $1 | grep -v \# | sed '/^$/ d'
+}
+
+# log into vps
+alias vps="ssh user@myvps.com"
+
+# tunnel local IRC port to remote IRC port
+alias ltunnel6667="ssh -fN -L 6667:localhost:6667 user@myvps.com"
+
+# tunnel remote SSL port to local SSL port
+alias rtunnel443="ssh -fN -R 443:localhost:443 user@myvps.com"
 
 ## configs
 # DNS spoofing
