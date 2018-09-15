@@ -107,3 +107,6 @@ vi /etc/hosts
 ## logs
 /var/logs
 tail -f /var/log/messages
+
+## Reference
+https://www.tldp.org/LDP/tlk/ipc/ipc.html
