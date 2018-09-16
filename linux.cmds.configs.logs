@@ -94,6 +94,7 @@ alias vps="ssh user@myvps.com"
 alias ltunnel6667="ssh -fN -L 6667:localhost:6667 user@myvps.com"
 
 # tunnel remote SSL port to local SSL port
+# make sure "GatewayPorts yes" in myvps.com:/etc/ssh/sshd_config
 alias rtunnel443="ssh -fN -R 443:localhost:443 user@myvps.com"
 
 ## configs
